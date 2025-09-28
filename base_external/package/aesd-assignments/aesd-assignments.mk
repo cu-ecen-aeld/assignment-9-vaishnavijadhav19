@@ -9,7 +9,7 @@
 AESD_ASSIGNMENTS_VERSION = dcedde5e3a7f9d10eeb3389a5282eb7a72f394bc
 
 
-# Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
+# Note: Be sure to reference the *ssh* repository URL here (not Https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
 AESD_ASSIGNMENTS_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-vaishnavijadhav19.git
