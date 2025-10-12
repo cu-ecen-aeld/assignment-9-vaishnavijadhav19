@@ -1,0 +1,59 @@
+#!/bin/sh
+
+
+case "$1" in
+  start)
+    echo " Loading kernel modules"
+
+    
+    echo "Loading scull.ko"
+    insmod /lib/modules/$(uname -r)/extra/scull.ko || echo "Failed to load scull"
+
+   
+    echo "Loading faulty.ko"
+    insmod /lib/modules/$(uname -r)/extra/faulty.ko || echo "Failed to load faulty"
+
+   
+    FAULTY_MAJOR=$(grep faulty /proc/devices | awk '{print $1}')
+    if [ -n "$FAULTY_MAJOR" ] && [ ! -e /dev/faulty ]; then
+      echo "Creating /dev/faulty with major $FAULTY_MAJOR"
+      mknod /dev/faulty c $FAULTY_MAJOR 0
+      chmod 666 /dev/faulty
+    fi
+
+  
+    echo "Loading hello.ko..."
+    modprobe hello || echo "Failed to load hello"
+
+    echo " All modules have been loaded"
+    ;;
+
+  stop)
+    echo "Unloading kernel modules"
+
+    echo "Unloading hello..."
+    rmmod hello 2>/dev/null
+
+    echo "Unloading faulty..."
+    rmmod faulty 2>/dev/null
+
+    echo "Unloading scull..."
+    rmmod scull 2>/dev/null
+
+    echo "All modules unloaded"
+    ;;
+
+  restart)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
