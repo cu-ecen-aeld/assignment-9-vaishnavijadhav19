@@ -1,0 +1,5 @@
+config BR2_PACKAGE_AESD_CHAR_DRIVER
+    bool "aesd-char-driver"
+    help
+      installs aesd char driver and init scrips from Assignment 3 repository.
+
