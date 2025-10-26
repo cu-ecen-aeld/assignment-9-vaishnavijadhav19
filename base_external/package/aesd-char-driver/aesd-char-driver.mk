@@ -5,7 +5,8 @@
 ##############################################################
 
 # referencing assignment 3 git contents
-AESD_CHAR_DRIVER_VERSION = 01422270a5778f6b9c1a919bb875a583c78c8470
+AESD_CHAR_DRIVER_VERSION = eb021e977a45cf4f8fd5754225601e610b5d3e04
+
 
 AESD_CHAR_DRIVER_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-vaishnavijadhav19.git
 AESD_CHAR_DRIVER_SITE_METHOD = git
